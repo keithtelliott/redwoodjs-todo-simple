@@ -2,6 +2,7 @@ import ToDoInput from '../ToDoInput/ToDoInput'
 import ToDoTable from '../ToDoTable/ToDoTable'
 import { useState } from 'react'
 import toggleComplete from '../../util/toggleComplete'
+import moveUp from 'src/util/moveUp'
 
 const ToDoApp = () => {
   const initialTodos = [
@@ -40,6 +41,7 @@ const ToDoApp = () => {
 
   function handleClickMoveUp(id) {
     console.log('moving up')
+    setTodos(moveUp(id, todos))
   }
 
   function handleClickMoveDown(id) {
