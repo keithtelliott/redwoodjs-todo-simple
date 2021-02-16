@@ -1,0 +1,17 @@
+
+.todo-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-child {
+  margin: auto
+}
+
+.todo-complete {
+  color: red;
+}
+
+button {
+  margin: 5px;
+}

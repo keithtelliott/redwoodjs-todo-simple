@@ -3,30 +3,12 @@ import ToDoTable from '../ToDoTable/ToDoTable'
 import { useState } from 'react'
 import toggleComplete from '../../util/toggleComplete'
 import moveUp from 'src/util/moveUp'
+import getNextId from 'src/util/getNextId'
+import defaultToDos from 'src/util/defaultToDos'
+import moveDown from 'src/util/moveDown'
 
 const ToDoApp = () => {
-  const initialTodos = [
-    {
-      id: 1,
-      text: 'Walk dog',
-      isComplete: false,
-    },
-    {
-      id: 2,
-      text: 'Wash dishes',
-      isComplete: false,
-    },
-    {
-      id: 3,
-      text: 'Learn React',
-      isComplete: false,
-    },
-    {
-      id: 4,
-      text: 'Study with FlipAgain',
-      isComplete: false,
-    },
-  ]
+  const initialTodos = defaultToDos
 
   const [todos, setTodos] = useState(initialTodos)
 
@@ -36,21 +18,30 @@ const ToDoApp = () => {
 
   function handleClickToggleComplete(id) {
     setTodos(toggleComplete(id, todos))
-    console.log('Running toggle handler...')
   }
 
   function handleClickMoveUp(id) {
-    console.log('moving up')
     setTodos(moveUp(id, todos))
   }
 
   function handleClickMoveDown(id) {
-    console.log('in moving down handler')
+    console.log('chmd here is id:  ' + id)
+    setTodos(moveDown(id, todos))
+  }
+
+  function handleClickSaveNewToDo(newToDoText) {
+    if (newToDoText === undefined || newToDoText === '') return
+
+    setTodos([
+      ...todos,
+      { id: getNextId(todos), text: newToDoText, isComplete: false },
+    ])
   }
 
   return (
-    <div>
-      <ToDoInput />
+    <div className="todo-container">
+      <h1 className="todo-child">ToDos!</h1>
+      <ToDoInput handleClickSaveNewToDo={handleClickSaveNewToDo} />
       <ToDoTable
         todos={todos}
         handleClickRemove={handleClickRemove}

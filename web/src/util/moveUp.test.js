@@ -20,8 +20,8 @@ describe('moveUp', () => {
   })
 
   it('throws an error if we do not pass in the required arguments', () => {
-    expect(() => moveUp(ID_TODO_AT_POSITION_ZERO)).toThrow()
-    expect(() => moveUp(defaultToDos)).toThrow()
+    expect(() => moveUp(ID_TODO_AT_POSITION_ZERO)).toThrow('undefined')
+    expect(() => moveUp(defaultToDos)).toThrow('undefined')
     expect(() => moveUp(ID_TODO_IN_THE_MIDDLE, -1)).toThrowError('array')
   })
 })

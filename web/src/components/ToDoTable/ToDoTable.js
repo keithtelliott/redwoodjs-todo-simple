@@ -10,23 +10,25 @@ const ToDoTable = ({
   if (todos === null || !Array.isArray(todos)) return null
 
   return (
-    <ul>
-      {todos.map((todo, index) => (
-        <li key={todo.id}>
-          {
-            <ToDoTableRow
-              todo={todo}
-              itemIndex={index}
-              todoListLength={todos.length}
-              handleClickRemove={handleClickRemove}
-              handleClickToggleComplete={handleClickToggleComplete}
-              handleClickMoveUp={handleClickMoveUp}
-              handleClickMoveDown={handleClickMoveDown}
-            />
-          }
-        </li>
-      ))}
-    </ul>
+    <div className="todo-child">
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={todo.id}>
+            {
+              <ToDoTableRow
+                todo={todo}
+                itemIndex={index}
+                todoListLength={todos.length}
+                handleClickRemove={handleClickRemove}
+                handleClickToggleComplete={handleClickToggleComplete}
+                handleClickMoveUp={handleClickMoveUp}
+                handleClickMoveDown={handleClickMoveDown}
+              />
+            }
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
