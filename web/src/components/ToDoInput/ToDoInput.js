@@ -2,6 +2,11 @@ import { useState } from 'react'
 
 const ToDoInput = ({ handleClickSaveNewToDo }) => {
   const [newToDoText, setNewToDoText] = useState('A New ToDo!')
+
+  function onClickSave() {
+    handleClickSaveNewToDo(newToDoText)
+    setNewToDoText('')
+  }
   return (
     <div className="todo-child">
       Add a ToDo:{' '}
@@ -10,10 +15,7 @@ const ToDoInput = ({ handleClickSaveNewToDo }) => {
         value={newToDoText}
         onChange={() => setNewToDoText(event.target.value)}
       />
-      <button
-        disabled={!newToDoText}
-        onClick={() => handleClickSaveNewToDo(newToDoText)}
-      >
+      <button disabled={!newToDoText} onClick={onClickSave}>
         Save
       </button>
     </div>
