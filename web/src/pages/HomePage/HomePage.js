@@ -5,7 +5,6 @@ const HomePage = () => {
   return (
     <>
       <ToDoApp />
-      {/* <ToDoApp todos={'not an arry'} /> */}
     </>
   )
 }
